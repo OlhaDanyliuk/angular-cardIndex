@@ -1,0 +1,26 @@
+/* Add application styles & imports to this file! */
+a { cursor: pointer }
+
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+  }
+  
+.app-container {
+    min-height: 320px;
+    width: 80%;
+    overflow: hidden;
+}
+
+.btn-delete-user {
+    width: 40px;
+    text-align: center;
+    box-sizing: content-box;
+}
+.nav a{
+    font-size: 20px;
+    }
