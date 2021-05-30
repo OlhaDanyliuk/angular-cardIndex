@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEditCardComponent } from './categories/cards/add-edit-card/add-edit-card.component';
 import { CardsComponent } from './categories/cards/cards.component';
 import { OneCardComponent } from './categories/cards/one-card/one-card.component';
 import { ShowCardsComponent } from './categories/cards/show-cards/show-cards.component';
@@ -9,7 +10,7 @@ import { ShowCategoryCardsComponent } from './categories/show-category-cards/sho
 
 const routes: Routes = [
   {path:'',component:CardsComponent},
-  {path:'cards', children:[{path:'', component:ShowCardsComponent},{ path: ':id', component: OneCardComponent }, ]},
+  {path:'cards', children:[{path:'', component:ShowCardsComponent},{ path: ':id', component: OneCardComponent },{ path: 'edit/:id', component: AddEditCardComponent } ]},
   {path: 'categories',children:[{ path:'', component: ShowCategoriesComponent},{ path: ':id', component: ShowCategoryCardsComponent }, ]}
 ];
 

@@ -35,6 +35,7 @@ export class ShowCategoryCardsComponent implements OnInit {
     })
   }
 
+
   goToCard(id:number, name: string){
     this.router.navigate(
       ['cards', id],{
@@ -43,6 +44,27 @@ export class ShowCategoryCardsComponent implements OnInit {
         }
     })
     
+  }
+
+  addCard(){
+    this.router.navigate(['cards/add']);
+  }
+  editCard(id:number, name: string){
+    this.router.navigate(
+      ['cards/edit', id],{
+        queryParams:{
+            'name': name
+        }
+    })
+    
+  }
+  deleteCard(id:number){
+    if(confirm('Are you sure??')){
+    this.service.deleteCard(id).subscribe(data=>{
+        alert(data.toString());
+        this.refreshCardsList();
+      })
+    }
   }
 
 }

@@ -14,6 +14,8 @@ import { ShowCategoriesComponent } from './categories/show-categories/show-categ
 import { FormsModule } from '@angular/forms';
 import { ShowCategoryCardsComponent } from './categories/show-category-cards/show-category-cards.component';
 import { OneCardComponent } from './categories/cards/one-card/one-card.component';
+import { AddEditCategoriesComponent } from './categories/add-edit-categories/add-edit-categories.component';
+import { AddEditCardComponent } from './categories/cards/add-edit-card/add-edit-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { OneCardComponent } from './categories/cards/one-card/one-card.component
     CategoriesComponent,
     ShowCategoriesComponent,
     ShowCategoryCardsComponent,
-    OneCardComponent
+    OneCardComponent,
+    AddEditCategoriesComponent,
+    AddEditCardComponent
   ],
   imports: [
     BrowserModule,

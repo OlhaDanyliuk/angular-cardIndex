@@ -1,3 +1,5 @@
+
+
 <div class="card" *ngFor="let dataItem of CardsList">
     <mat-card class="card-body">
       <div class="header" class="tabcontent">
@@ -9,8 +11,8 @@
         </mat-card-content>
       <mat-card-actions >
         <!-- <button mat-button>SUBSCRIBE</button> -->
-        <button type="button" class="btn btn-dark mr-1">EDIT</button>
-        <button type="button" class="btn btn-dark mr-1">DELETE</button>
+        <button type="button" class="btn btn-dark mr-1"(click)="editCard(dataItem.id, dataItem.name)">EDIT</button>
+        <button type="button" class="btn btn-dark mr-1" (click)="deleteCard(dataItem.id)">DELETE</button>
       </mat-card-actions>
     </mat-card>
   </div>
