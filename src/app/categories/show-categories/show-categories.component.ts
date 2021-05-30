@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ShowCategoriesComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService, private router: Router) { }
 
   CategoriesList: any=[];
   
@@ -48,6 +49,15 @@ export class ShowCategoriesComponent implements OnInit {
       }else{
         return (b[prop]>a[prop])?1 : ((b[prop]<a[prop]) ?-1 :0);
       }
+    })
+  }
+
+  goToCategoryCards(id:number, name:string){
+    this.router.navigate(
+      ['categories', id],{
+        queryParams:{
+            'name': name
+        }
     })
   }
 }

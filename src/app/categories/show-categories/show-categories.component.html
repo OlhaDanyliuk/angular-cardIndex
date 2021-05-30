@@ -1,46 +1,32 @@
 
 <table class="table table-bordered table-light table-hover">
     <thead class="thead-dark">
-        <tr>
-            <th>
+        <tr class="h3">
+            <th >
               <div class="d-flex flex-row">
                 <input [(ngModel)]="CategoryIdFilter" class="form-control"
                 (keyup)="FilterFn()" placeholder="Filter">
 
                 <button type="button" class="btn btn-light"
-                (click)="sortResult('id',true)">
+                (click)="sortResult('id',true)">⬆️
               </button>
               <button type="button" class="btn btn-light"
-                (click)="sortResult('id',false)">
+                (click)="sortResult('id',false)">⬇️
               </button>
 
               </div>
-              
-              CategoryId</th>
-            <th>
-              <div class="d-flex flex-row">
-                <input [(ngModel)]="CategoryNameFilter" class="form-control"
-                (keyup)="FilterFn()" placeholder="Filter">
-
-                <button type="button" class="btn btn-light"
-                (click)="sortResult('name',true)">
-              </button>
-              <button type="button" class="btn btn-light"
-                (click)="sortResult('name',false)">
-              </button>
-
-              </div>
-              Category Name</th>
+              <br>
+              Category</th>
             <th>Options</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let dataItem of CategoriesList">
+        <tr *ngFor="let dataItem of CategoriesList" class="h5">
             <td>{{dataItem.name}}</td>
             <td>
-                <button type="button" class="btn btn-light mr-1">Show cards</button>
-                <button type="button" class="btn btn-light mr-1">Edit</button>
-                <button type="button" class="btn btn-light mr-1">Delete</button>
+                <button type="button" class="btn btn-dark mr-1" (click)="goToCategoryCards(dataItem.id, dataItem.name)">Show cards</button>
+                <button type="button" class="btn btn-dark mr-1">Edit</button>
+                <button type="button" class="btn btn-dark mr-1">Delete</button>
             </td>
         </tr>
     </tbody>

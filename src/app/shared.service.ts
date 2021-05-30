@@ -18,7 +18,9 @@ readonly APIUrl="https://localhost:44302/api";
   getCategoryById(val:any){
     return this.http.get(this.APIUrl+'/categories/'+val);
   } 
-  
+  getCardsByCategoryId(val:any):Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/categories/'+val+'/cards');
+  }
   addCategory(val:any){
     return this.http.post(this.APIUrl+'/categories/create',val);
   }

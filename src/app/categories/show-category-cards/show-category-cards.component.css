@@ -1,0 +1,12 @@
+.dataItem-text
+{
+    font-size:18px;
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical; */
+ }
+.card{
+    margin-top: 15px;
+}

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +13,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ShowCategoriesComponent } from './categories/show-categories/show-categories.component';
 import { FormsModule } from '@angular/forms';
 import { ShowCategoryCardsComponent } from './categories/show-category-cards/show-category-cards.component';
+import { OneCardComponent } from './categories/cards/one-card/one-card.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +22,16 @@ import { ShowCategoryCardsComponent } from './categories/show-category-cards/sho
     ShowCardsComponent,
     CategoriesComponent,
     ShowCategoriesComponent,
-    ShowCategoryCardsComponent
+    ShowCategoryCardsComponent,
+    OneCardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatButtonModule
   ],
   entryComponents:[ShowCardsComponent],
   providers: [],
