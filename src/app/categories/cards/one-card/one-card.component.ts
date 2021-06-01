@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared.service';
@@ -8,6 +8,7 @@ import { SharedService } from 'src/app/shared.service';
   templateUrl: './one-card.component.html',
   styleUrls: ['./one-card.component.css']
 })
+@Injectable()
 export class OneCardComponent implements OnInit {
 
   private routeSubscription: Subscription;
