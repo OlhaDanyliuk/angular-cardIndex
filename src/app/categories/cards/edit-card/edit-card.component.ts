@@ -1,28 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared.service';
 
 @Component({
-  selector: 'app-add-edit-card',
-  templateUrl: './add-edit-card.component.html',
-  styleUrls: ['./add-edit-card.component.css']
+  selector: 'app-edit-card',
+  templateUrl: './edit-card.component.html',
+  styleUrls: ['./edit-card.component.css']
 })
-export class AddEditCardComponent implements OnInit {
+@Injectable()
+export class EditCardComponent implements OnInit {
 
   private routeSubscription: Subscription;
   private querySubscription: Subscription;
   
-  id:any ;
-  name:any;
-  text:any;
+  cardId:number | undefined ;
+  cardName:string | undefined;
+  cardText:string | undefined;
   Card:any;
 
   constructor(private service:SharedService,private activeRoute: ActivatedRoute, private router:Router) {
-    this.routeSubscription = activeRoute.params.subscribe(params=>this.id=params['id']);
+    this.routeSubscription = activeRoute.params.subscribe(params=>this.cardId=params['id']);
     this.querySubscription = activeRoute.queryParams.subscribe(
       (queryParam: any) => {
-          this.name = queryParam['name'];
+          this.cardName = queryParam['name'];
       }
     );
    }
@@ -32,21 +33,31 @@ export class AddEditCardComponent implements OnInit {
   }
 
   loadCard(){
-    this.service.getCardById(this.id).subscribe(data=>{
+    this.service.getCardById(this.cardId).subscribe(data=>{
       this.Card=data;
     })
+    
   }
-
-  editClick(){
-    this.service.updateCard(this.Card).subscribe(res=>{
-      alert(res.toString());
-    })
+  goToCard(){
     this.router.navigate(
       ['cards', this.Card.id],{
         queryParams:{
             'name': this.Card.name
         }
     })
+  }
+
+  editClick(){
+    var val = {
+      Id:this.Card.id,
+      Name:this.Card.name,
+      Text:this.Card.text,
+      CategoryId:this.Card.categoryId
+    };
+    this.service.updateCard(val).subscribe(res=>{
+      alert(res.toString());
+    })
+    this.goToCard();
   }
   cancelClick(dataItem:any){
     this.router.navigate(

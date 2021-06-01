@@ -10,8 +10,8 @@
         <tr *ngFor="let dataItem of CardsList" class="h5">
             <td>{{dataItem.name}}</td>
             <td>
-                <button type="button" class="btn btn-dark mr-1">Edit</button>
-                <button type="button" class="btn btn-dark mr-1">Delete</button>
+                <button type="button" class="btn btn-dark mr-1" (click)="editCard(dataItem.id, dataItem.name)">Edit</button>
+                <button type="button" class="btn btn-dark mr-1" (click)="deleteCard(dataItem.id)">Delete</button>
             </td>
         </tr>
     </tbody>

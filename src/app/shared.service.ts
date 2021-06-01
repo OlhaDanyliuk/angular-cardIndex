@@ -41,11 +41,11 @@ readonly APIUrl="https://localhost:44302/api";
     return this.http.get(this.APIUrl+'/cards/'+val);
   }
   addCard(val:any){
-    return this.http.post(this.APIUrl+'/cards',val);
+    return this.http.post(this.APIUrl+'/cards/create',val);
   }
 
   updateCard(val:any){
-    return this.http.put(this.APIUrl+'/cards',val);
+    return this.http.put(this.APIUrl+'/cards/update',val);
   }
 
   deleteCard(val:any){
