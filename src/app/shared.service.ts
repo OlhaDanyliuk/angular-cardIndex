@@ -30,7 +30,7 @@ readonly APIUrl="https://localhost:44302/api";
   }
 
   deleteCategory(val:any){
-    return this.http.delete(this.APIUrl+'/categories/'+val);
+    return this.http.delete(this.APIUrl+'/categories/remove/'+val);
   }
 
 

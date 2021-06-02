@@ -2,17 +2,17 @@
     <div class="form-group" >
             <label class="col-sm-2 col-form-label">Card Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" [(ngModel)]="Card.name" name="name">
+                <input type="text" class="form-control" [(ngModel)]="cardName" name="name">
             </div>
         
             <label class="col-sm-2 col-form-label">Text</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="Card.text" name="text" rows="3" ></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="cardText" name="text" rows="3" ></textarea>
             </div>
         </div>
         <div class="form-group ">
             <button (click)="addClick()" class="btn btn-primary ml-3">Add</button>
-            <button (click)="cancelClick(Card)" class="btn btn-primary ml-5">Cancel </button>
+            <button (click)="cancelClick()" class="btn btn-primary ml-5">Cancel </button>
         </div>
 
 </form>

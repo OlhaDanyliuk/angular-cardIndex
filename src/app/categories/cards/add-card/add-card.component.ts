@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared.service';
@@ -11,45 +11,39 @@ import { SharedService } from 'src/app/shared.service';
 @Injectable()
 export class AddCardComponent implements OnInit {
 
-  
-  Card:any;
+  categoryId:number | undefined
+  cardName:string | undefined;
+  cardText:string | undefined;
 
   private querySubscription: Subscription;
   constructor(private service:SharedService,private activeRoute: ActivatedRoute, private router: Router) {
     this.querySubscription = activeRoute.queryParams.subscribe(
       (queryParam: any) => {
-          this.Card.categoryId = queryParam['id'];
+          this.categoryId = Number(queryParam['id']);
       }
   );
    }
    
   ngOnInit(): void {
-    this.Card.name="";
-    this.Card.text="";
   }
     
-  goToCard(){
-    this.router.navigate(
-      ['cards', this.Card.id],{
-        queryParams:{
-            'name': this.Card.name
-        }
-    })
+  goToCards(){
+    this.router.navigate(['categories', this.categoryId])
   }
 
   addClick(){
     var val = {
-      Name:this.Card.name,
-      Text:this.Card.text,
-      CategoryId:this.Card.categoryId
+      Name:this.cardName,
+      Text:this.cardText,
+      CategoryId:this.categoryId
     };
-    // this.service.addCard(val).subscribe(res=>{
-    //   alert(res.toString());
-    // })
-    this.goToCard();
+    this.service.addCard(val).subscribe(res=>{
+      alert(res.toString());
+    })
+    this.goToCards();
   }
 
-  cancelClick(dataItem:any){
+  cancelClick(){
     this.router.navigate(['cards']);
   }
 

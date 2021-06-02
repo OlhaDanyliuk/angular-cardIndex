@@ -4,7 +4,7 @@
         <tr class="h3">
             <th >
               <div class="d-flex flex-row">
-                <input [(ngModel)]="CategoryIdFilter" class="form-control"
+                <input [(ngModel)]="CategoryNameFilter" class="form-control"
                 (keyup)="FilterFn()" placeholder="Filter">
 
                 <button type="button" class="btn btn-light"
@@ -25,9 +25,15 @@
             <td>{{dataItem.name}}</td>
             <td>
                 <button type="button" class="btn btn-dark mr-1" (click)="goToCategoryCards(dataItem.id, dataItem.name)">Show cards</button>
-                <button type="button" class="btn btn-dark mr-1">Edit</button>
-                <button type="button" class="btn btn-dark mr-1">Delete</button>
+                <button type="button" class="btn btn-dark mr-1"(click)="editCategory(dataItem)">Edit</button>
+                <button type="button" class="btn btn-dark mr-1" (click)="deleteCategory(dataItem.id)">Delete</button>
             </td>
         </tr>
+        <tr>  
+          <td><input [(ngModel)]="newDynamic.name" class="form-control" type="text" /></td>  
+          <td>
+            <button type="button" class="btn btn-dark mr-1" (click)="addRow()">Add</button>  
+          </td>    
+        </tr>   
     </tbody>
 </table>

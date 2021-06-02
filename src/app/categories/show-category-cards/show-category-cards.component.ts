@@ -46,8 +46,8 @@ export class ShowCategoryCardsComponent implements OnInit {
     
   }
 
-  addCard(){
-    this.router.navigate(['cards/add'],{
+  addClick(){
+    this.router.navigate(['cards/create'],{
       queryParams:{
           'id':this.categoryId,
           'name': this.categoryName

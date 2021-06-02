@@ -11,7 +11,12 @@ import { AddCardComponent } from './categories/cards/add-card/add-card.component
 
 const routes: Routes = [
   {path:'',component:CardsComponent},
-  {path:'cards', children:[{path:'', component:ShowCardsComponent},{ path: ':id', component: OneCardComponent },{ path: 'edit/:id', component: EditCardComponent } ,{ path: 'add', component: AddCardComponent } ]},
+
+  {path:'cards', children:[
+    {path:'', component:ShowCardsComponent},{ path: 'create', component: AddCardComponent },
+    { path: ':id', component: OneCardComponent },{ path: 'edit/:id', component: EditCardComponent } 
+  ]},
+
   {path: 'categories',children:[{ path:'', component: ShowCategoriesComponent},{ path: ':id', component: ShowCategoryCardsComponent }, ]}
 ];
 
