@@ -8,6 +8,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ShowCategoriesComponent } from './categories/show-categories/show-categories.component';
 import { ShowCategoryCardsComponent } from './categories/show-category-cards/show-category-cards.component';
 import { AddCardComponent } from './categories/cards/add-card/add-card.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path:'',component:CardsComponent},
@@ -17,7 +18,9 @@ const routes: Routes = [
     { path: ':id', component: OneCardComponent },{ path: 'edit/:id', component: EditCardComponent } 
   ]},
 
-  {path: 'categories',children:[{ path:'', component: ShowCategoriesComponent},{ path: ':id', component: ShowCategoryCardsComponent }, ]}
+  {path: 'categories',children:[{ path:'', component: ShowCategoriesComponent},{ path: ':id', component: ShowCategoryCardsComponent }, ]},
+  {path: 'login', component:LoginComponent}
+
 ];
 
 @NgModule({

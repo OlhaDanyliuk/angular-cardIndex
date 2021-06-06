@@ -11,14 +11,15 @@ import { ShowCardsComponent } from './categories/cards/show-cards/show-cards.com
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriesComponent } from './categories/categories.component';
 import { ShowCategoriesComponent } from './categories/show-categories/show-categories.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { ShowCategoryCardsComponent } from './categories/show-category-cards/show-category-cards.component';
 import { OneCardComponent } from './categories/cards/one-card/one-card.component';
 import { EditCardComponent } from './categories/cards/edit-card/edit-card.component';
 import { AddCardComponent } from './categories/cards/add-card/add-card.component';
 import { DialogOverviewExampleDialogComponent } from './categories/show-categories/dialog-overview-example-dialog/dialog-overview-example-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component'; 
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OneCardComponent,
     EditCardComponent,
     AddCardComponent,
-    DialogOverviewExampleDialogComponent
+    DialogOverviewExampleDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
