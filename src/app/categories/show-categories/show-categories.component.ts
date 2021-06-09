@@ -44,6 +44,9 @@ export class ShowCategoriesComponent implements OnInit {
       this.service.updateCategories(dataItem).subscribe(data=>{
         alert(data.toString());
         this.refreshCategoriesList();
+      },
+      (error) => {
+        alert(error.error);
       })
     });
     
@@ -54,6 +57,9 @@ export class ShowCategoriesComponent implements OnInit {
     this.service.getCategoriesList().subscribe(data=>{
       this.CategoriesList=data;
       this.CategoryListWithoutFilter=data;
+    },
+    (error) => {
+      alert(error.error);
     });
   }
 
@@ -61,6 +67,9 @@ export class ShowCategoriesComponent implements OnInit {
     var val = {name: this.newDynamic.name};
       this.service.addCategory(val).subscribe(res=>{
         alert(res.toString());
+      },
+      (error) => {
+        alert(error.error);
       });    
       return true;  
   } 
@@ -73,6 +82,9 @@ export class ShowCategoriesComponent implements OnInit {
       this.service.deleteCategory(id).subscribe(data=>{
           alert(data.toString());
           this.refreshCategoriesList();
+        },
+        (error) => {
+          alert(error.error);
         })
       }
     }

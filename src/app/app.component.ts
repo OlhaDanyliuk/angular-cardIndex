@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedService } from './shared.service';
+import { TokensService } from './token/tokens.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +10,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-cardIndex';
-  constructor(private router:Router){}
+  currentUser: any;
+  constructor(private router:Router,
+    private authenticationService: TokensService){}
   cards(){
     this.router.navigate(['/cards']);
+  }
+  logout(){
+    this.authenticationService.logout();
   }
 }

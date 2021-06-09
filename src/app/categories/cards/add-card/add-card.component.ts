@@ -38,7 +38,10 @@ export class AddCardComponent implements OnInit {
       CategoryId:this.categoryId
     };
     this.service.addCard(val).subscribe(res=>{
-      alert(res.toString());
+      alert(res.toString())
+    },
+    (error) => {
+      alert(error.error);
     })
     this.goToCards();
   }

@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardsComponent } from './categories/cards/cards.component';
 import { ShowCardsComponent } from './categories/cards/show-cards/show-cards.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CategoriesComponent } from './categories/categories.component';
 import { ShowCategoriesComponent } from './categories/show-categories/show-categories.component';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
@@ -19,7 +19,8 @@ import { AddCardComponent } from './categories/cards/add-card/add-card.component
 import { DialogOverviewExampleDialogComponent } from './categories/show-categories/dialog-overview-example-dialog/dialog-overview-example-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component'; 
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component'; 
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoginComponent } from './login/login.component';
     EditCardComponent,
     AddCardComponent,
     DialogOverviewExampleDialogComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,7 @@ import { LoginComponent } from './login/login.component';
     MatInputModule
   ],
   entryComponents:[ShowCardsComponent],
-  providers: [],
+  providers: [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

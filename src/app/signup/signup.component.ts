@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
-import { SharedService } from '../shared.service';
 import { TokensService } from '../token/tokens.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
-  loginForm!: FormGroup;
+  registrationForm: FormGroup;
   returnUrl: string | undefined;
   error = '';
 
@@ -29,26 +27,23 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
+    this.registrationForm = this.formBuilder.group({
+    username:['', Validators.required],
     email: ['', Validators.required],
-    password: ['', Validators.required]
+    password: ['', Validators.required],
+    confirmPassword: ['', Validators.required]
   });
   }
-get f() { return this.loginForm.value; }
+get f() { return this.registrationForm.value; }
 
 onSubmit() {
 
-  if (this.loginForm.invalid) {
-      return;
+  if (this.registrationForm.invalid) {
+      return this.error;
   }
-  var user={
-    Email: this.f.email,
-    Password: this.f.password
-  }
-  console.log(user);
-  this.authenticationService.login(this.f.email, this.f.password)
+  this.authenticationService.register(this.f.email, this.f.username, this.f.password, this.f.confirmPassword)
       .subscribe(data=>{
-        alert("Login successful!"),
+        alert("Registration successful!"),
         this.router.navigate(['/categories'])
       },
       (error) => {
@@ -56,8 +51,8 @@ onSubmit() {
       })
 }
 
-signup(){
-  this.router.navigate(['/signup']);
+login(){
+  this.router.navigate(['/login']);
 }
-      
+
 }
