@@ -22,6 +22,9 @@ export class ShowCardsComponent implements OnInit {
   refreshCardsList(){
     this.service.getCardList().subscribe(data=>{
       this.CardsList=data;
+    },
+    (error) => {
+      alert(error.error);
     })
   }
   editCard(id:number, name: string){
@@ -38,6 +41,9 @@ export class ShowCardsComponent implements OnInit {
     this.service.deleteCard(id).subscribe(data=>{
         alert(data.toString());
         this.refreshCardsList();
+      },
+      (error) => {
+        alert(error.error);
       })
     }
   }

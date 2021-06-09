@@ -24,6 +24,9 @@ export class EditCardComponent implements OnInit {
     this.querySubscription = activeRoute.queryParams.subscribe(
       (queryParam: any) => {
           this.cardName = queryParam['name'];
+      },
+      (error) => {
+        alert(error.error);
       }
     );
    }
@@ -35,6 +38,9 @@ export class EditCardComponent implements OnInit {
   loadCard(){
     this.service.getCardById(this.cardId).subscribe(data=>{
       this.Card=data;
+    },
+    (error) => {
+      alert(error.error);
     })
     
   }
@@ -56,6 +62,9 @@ export class EditCardComponent implements OnInit {
     };
     this.service.updateCard(val).subscribe(res=>{
       alert(res.toString());
+    },
+    (error) => {
+      alert(error.error);
     })
     this.goToCard();
   }

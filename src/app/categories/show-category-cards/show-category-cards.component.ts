@@ -32,6 +32,9 @@ export class ShowCategoryCardsComponent implements OnInit {
   refreshCardsList(){
     this.service.getCardsByCategoryId(this.categoryId).subscribe(data=>{
       this.CardsList=data;
+    },
+    (error) => {
+      alert(error.error);
     })
   }
 
@@ -68,6 +71,9 @@ export class ShowCategoryCardsComponent implements OnInit {
     this.service.deleteCard(id).subscribe(data=>{
         alert(data.toString());
         this.refreshCardsList();
+      },
+      (error) => {
+        alert(error.error);
       })
     }
   }

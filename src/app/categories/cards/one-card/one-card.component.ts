@@ -23,6 +23,9 @@ export class OneCardComponent implements OnInit {
     this.querySubscription = activeRoute.queryParams.subscribe(
       (queryParam: any) => {
           this.name = queryParam['name'];
+      },
+      (error) => {
+        alert(error.error);
       }
     );
    }
@@ -34,6 +37,9 @@ export class OneCardComponent implements OnInit {
   loadCard(){
     this.service.getCardById(this.id).subscribe(data=>{
       this.Card=data;
+    },
+    (error) => {
+      alert(error.error);
     })
   }
 
