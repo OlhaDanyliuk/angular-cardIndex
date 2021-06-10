@@ -19,8 +19,9 @@ import { AddCardComponent } from './categories/cards/add-card/add-card.component
 import { DialogOverviewExampleDialogComponent } from './categories/show-categories/dialog-overview-example-dialog/dialog-overview-example-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component'; 
+import { LoginComponent } from './login/login.component'; 
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,10 @@ import { SignupComponent } from './signup/signup.component';
     MatInputModule
   ],
   entryComponents:[ShowCardsComponent],
-  providers: [  ],
+  providers: [
+    { 
+      provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

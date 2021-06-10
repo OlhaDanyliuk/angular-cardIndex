@@ -10,7 +10,6 @@ import { TokensService } from './token/tokens.service';
 })
 export class AppComponent {
   title = 'angular-cardIndex';
-  currentUser: any;
   constructor(private router:Router,
     private authenticationService: TokensService){}
   cards(){

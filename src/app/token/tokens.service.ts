@@ -11,8 +11,8 @@ import { Token } from './token';
 })
 export class TokensService {
   private accessTokenKey: string = 'tokenKey';
-  private tokenUsernameKey: string ='';
-  private tokenEmailKey: string ='';
+  private tokenUsernameKey: string ='userName';
+  private tokenEmailKey: string ='email';
 
   constructor(private http: HttpClient, private router: Router) {
     
@@ -27,12 +27,12 @@ export class TokensService {
       .pipe(
         tap(data=>{
           var _token=data.toString();
-          this.tokenUsernameKey= this.parseUsername(_token)
-          this.parseEmail(_token),
-          
           localStorage.setItem(this.accessTokenKey, _token);
-          localStorage.setItem('userEmail', this.tokenEmailKey);
-          localStorage.setItem('userName', this.tokenEmailKey);
+          var username=this.parseUserName(_token);
+          localStorage.setItem(this.tokenUsernameKey, username);
+          var email=this.parseEmail(_token);
+          localStorage.setItem(this.tokenEmailKey, email);
+
         }))
   }
 
@@ -52,12 +52,13 @@ export class TokensService {
       .pipe(
         tap(token => {
           var _token=token.toString();
-          this.tokenUsernameKey= this.parseUsername(_token)
+          this.tokenUsernameKey= this.parseUserName(_token)
           this.tokenEmailKey= this.parseEmail(_token)
           localStorage.setItem(this.accessTokenKey, token.toString());
         })
       );
   }
+ 
 
   public isEmailUsed(email: string) {
     return this.http.get(environment.apiUrl + '/account/email/' + email);
@@ -78,12 +79,14 @@ export class TokensService {
 
   public logout(): void {
     localStorage.removeItem(this.accessTokenKey);
+    localStorage.removeItem(this.tokenEmailKey);
+    localStorage.removeItem(this.tokenUsernameKey);
     this.router.navigate(['/login']);
   }
 
   public getUsername(): string {
     const token = localStorage.getItem(this.accessTokenKey);
-    return this.parseUsername(token);
+    return this.parseUserName(token);
   }
 
   public getEmail(): string {
@@ -110,13 +113,12 @@ export class TokensService {
     return 0;
   }
 
-  public parseUsername(tokenPayload: string): string {
+  public parseUserName(tokenPayload: string): string {
     if (tokenPayload) {
       try {
         const tokenSplit = tokenPayload.split('.');
         const decodedToken = window.atob(tokenSplit[1]);
-
-        return JSON.parse(decodedToken);
+        return JSON.parse(decodedToken).sub;
       } catch {}
     }
     return null;
@@ -139,7 +141,7 @@ export class TokensService {
         const tokenSplit = tokenPayload.split('.');
         const decodedToken = window.atob(tokenSplit[1]);
 
-        return JSON.parse(decodedToken)[this.tokenEmailKey];
+        return JSON.parse(decodedToken).email;
       } catch {}
     }
     return null;

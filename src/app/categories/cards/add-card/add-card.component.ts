@@ -38,7 +38,7 @@ export class AddCardComponent implements OnInit {
       CategoryId:this.categoryId
     };
     this.service.addCard(val).subscribe(res=>{
-      alert(res.toString())
+      this.router.navigate(['cards'])
     },
     (error) => {
       alert(error.error);

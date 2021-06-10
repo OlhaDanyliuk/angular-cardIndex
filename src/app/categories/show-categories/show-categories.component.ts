@@ -66,7 +66,7 @@ export class ShowCategoriesComponent implements OnInit {
   addRow() {    
     var val = {name: this.newDynamic.name};
       this.service.addCategory(val).subscribe(res=>{
-        alert(res.toString());
+        alert("Success inserting!");
       },
       (error) => {
         alert(error.error);

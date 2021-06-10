@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from './model/user';
+import { TokensService } from './token/tokens.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,9 @@ import { User } from './model/user';
 export class SharedService {
 readonly APIUrl="https://localhost:44302/api";
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private tokensService: TokensService) {
    }
+
   getCategoriesList():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/categories');
   }
@@ -33,7 +35,6 @@ readonly APIUrl="https://localhost:44302/api";
   deleteCategory(val:any){
     return this.http.delete(this.APIUrl+'/categories/remove/'+val);
   }
-
 
   getCardList():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/cards');

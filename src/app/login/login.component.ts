@@ -45,7 +45,6 @@ onSubmit() {
     Email: this.f.email,
     Password: this.f.password
   }
-  console.log(user);
   this.authenticationService.login(this.f.email, this.f.password)
       .subscribe(data=>{
         alert("Login successful!"),
